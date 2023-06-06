@@ -13,12 +13,20 @@ class App extends Component {
     this.setState((el) => {
       return { [currentEl]: el[currentEl] + 1 };
     });
-    console.log(this.state);
+  };
+  handleTotal = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+  handlePositiveFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return Math.round((good / (good + neutral + bad)) * 100);
   };
 
   options = ["good", "neutral", "bad"];
   render() {
     const { good, neutral, bad } = this.state;
+
     return (
       <div>
         <h1>Please leave feedback</h1>
@@ -41,6 +49,12 @@ class App extends Component {
           </li>
           <li>
             <p>Bad:{bad}</p>
+          </li>
+          <li>
+            <p>Total:{this.handleTotal()}</p>
+          </li>
+          <li>
+            <p>Positive Feedback:{this.handlePositiveFeedback()}%</p>
           </li>
         </ul>
       </div>
