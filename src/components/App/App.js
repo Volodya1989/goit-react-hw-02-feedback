@@ -41,7 +41,6 @@ class App extends Component {
             onLeaveFeedback={(e) => this.handleOnClick(e)}
           />
         </Section>
-
         <Section title="Statistics">
           {totalNumberOfFeedbacks ? (
             <Statistics
