@@ -2,6 +2,7 @@
 import { Component } from "react";
 import shortid from "shortid";
 import Statistics from "./components/Statistics";
+import Notification from "./components/Notification";
 
 class App extends Component {
   state = {
@@ -21,7 +22,7 @@ class App extends Component {
   };
   countPositiveFeedbackPercentage = () => {
     const { good, neutral, bad } = this.state;
-    const result = `${Math.round((good / (good + neutral + bad)) * 100)} %`;
+    const result = Math.round((good / (good + neutral + bad)) * 100);
     return result;
   };
 
@@ -42,13 +43,23 @@ class App extends Component {
             </div>
           );
         })}
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
+        <h2>Statistics</h2>
+
+        {this.countTotalFeedback() ? (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={
+              this.countPositiveFeedbackPercentage()
+                ? `${this.countPositiveFeedbackPercentage()} %`
+                : "0 %"
+            }
+          />
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
       </div>
     );
   }
