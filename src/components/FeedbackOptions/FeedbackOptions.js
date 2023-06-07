@@ -1,20 +1,21 @@
 import PropTypes from "prop-types";
 import shortid from "shortid";
+import { Button, InlineButtons } from "./FeedbackOptions.styled";
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <>
+    <InlineButtons>
       {options.map((el) => {
         const short_id = shortid.generate();
         return (
           <div key={short_id}>
-            <button type="button" name={el} onClick={onLeaveFeedback}>
+            <Button type="button" name={el} onClick={onLeaveFeedback}>
               {el}
-            </button>
+            </Button>
           </div>
         );
       })}{" "}
-    </>
+    </InlineButtons>
   );
 };
 export default FeedbackOptions;
