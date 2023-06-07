@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Button = styled.button`
+  text-transform: capitalize;
   background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
   border: 0;
   border-radius: 12px;
@@ -29,10 +30,6 @@ export const Button = styled.button`
 }`;
 export const InlineButtons = styled.div`
   display: flex;
-  justify-content:center;
+  justify-content: center;
   gap: 15px;
 `;
-
-
-
-
