@@ -1,19 +1,21 @@
 import PropTypes from "prop-types";
+import { Li, List, Numbers } from "./Statistics.styled";
 
 const Statistics = (props) => {
   const keys = Object.keys(props);
 
   return (
     <>
-      <ul>
+      <List>
         {keys.map((key) => {
           return (
-            <li key={key}>
-              {key}: {props[key]}{" "}
-            </li>
+            <Li key={key}>
+              {key.split(/(?=[A-Z])/).join(" ")}:{" "}
+              <Numbers>{props[key]}</Numbers>
+            </Li>
           );
         })}
-      </ul>
+      </List>
     </>
   );
 };
@@ -24,5 +26,5 @@ Statistics.propTypes = {
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.string.isRequired,
+  positiveFeedback: PropTypes.string.isRequired,
 };
