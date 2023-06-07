@@ -1,6 +1,7 @@
 // Separate named imports, this makes the code more readable
 import { Component } from "react";
 import shortid from "shortid";
+import Statistics from "./components/Statistics";
 
 class App extends Component {
   state = {
@@ -14,13 +15,14 @@ class App extends Component {
       return { [currentEl]: el[currentEl] + 1 };
     });
   };
-  handleTotal = () => {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   };
-  handlePositiveFeedback = () => {
+  countPositiveFeedbackPercentage = () => {
     const { good, neutral, bad } = this.state;
-    return Math.round((good / (good + neutral + bad)) * 100);
+    const result = `${Math.round((good / (good + neutral + bad)) * 100)} %`;
+    return result;
   };
 
   options = ["good", "neutral", "bad"];
@@ -40,23 +42,13 @@ class App extends Component {
             </div>
           );
         })}
-        <ul>
-          <li>
-            <p>Good:{good}</p>
-          </li>
-          <li>
-            <p>Neutral:{neutral}</p>
-          </li>
-          <li>
-            <p>Bad:{bad}</p>
-          </li>
-          <li>
-            <p>Total:{this.handleTotal()}</p>
-          </li>
-          <li>
-            <p>Positive Feedback:{this.handlePositiveFeedback()}%</p>
-          </li>
-        </ul>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
       </div>
     );
   }
