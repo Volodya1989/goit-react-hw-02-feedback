@@ -1,10 +1,10 @@
 // Separate named imports, this makes the code more readable
 import { Component } from "react";
-import Statistics from "./components/Statistics";
-import FeedbackOptions from "./components/FeedbackOptions";
-import Section from "./components/Section";
-import Notification from "./components/Notification";
-import { Container } from "App.styled";
+import Statistics from "../Statistics";
+import FeedbackOptions from "../FeedbackOptions";
+import Section from "../Section";
+import Notification from "../Notification";
+import { Container } from "components/App/App.styled";
 
 class App extends Component {
   state = {
