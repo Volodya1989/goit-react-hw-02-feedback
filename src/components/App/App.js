@@ -27,17 +27,17 @@ class App extends Component {
     const result = `${Math.round((good / (good + neutral + bad)) * 100)} %`;
     return result;
   };
-  options = ["good", "neutral", "bad"];
 
   render() {
     const { good, neutral, bad } = this.state;
+
     const totalNumberOfFeedbacks = this.countTotalFeedback();
     const totalPercentageOfFeedbacks = this.countPositiveFeedbackPercentage();
     return (
       <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.options}
+            options={Object.keys(this.state)}
             onLeaveFeedback={(e) => this.handleOnClick(e)}
           />
         </Section>
